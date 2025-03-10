@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harbor AI | AI Workflows, Automation & Development</title>
+    <meta name="description" content="Transform your operations with Harbor AI's cutting-edge solutions for workflows, automation, and website development.">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #0066c0;
+            --secondary-blue: #0099ff;
+            --light-gray: #f4f6f8;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', 'Roboto', sans-serif;
+        }
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-primary:hover {
+            background-color: var(--secondary-blue);
+            transform: translateY(-2px);
+        }
+        .card {
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+        }
+        .price-tag {
+            background-color: var(--primary-blue);
+            color: white;
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+        .feature-check {
+            color: #10b981;
+            margin-right: 8px;
+        }
+        .price-card {
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        .price-card:hover {
+            border-color: var(--primary-blue);
+            transform: translateY(-5px);
+        }
+        .price-card.featured {
+            border: 2px solid var(--primary-blue);
+            transform: scale(1.05);
+        }
+        .price-card.featured:hover {
+            transform: scale(1.05) translateY(-5px);
+        }
+        .contact-input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            margin-bottom: 16px;
+        }
+        .contact-input:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(0,102,192,0.2);
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-white">
+    <!-- Navigation similar to Namecheap -->
+    <nav class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <a href="#home" class="text-2xl font-bold text-blue-600">Harbor AI</a>
+                    <div class="hidden md:flex ml-10 space-x-8">
+                        <a href="#about" class="text-gray-700 hover:text-blue-600">About</a>
+                        <a href="#services" class="text-gray-700 hover:text-blue-600">Services</a>
+                        <a href="#pricing" class="text-gray-700 hover:text-blue-600">Pricing</a>
+                        <a href="#contact" class="text-gray-700 hover:text-blue-600">Contact</a>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <a href="#contact" class="btn-primary">Get a Free Consultation</a>
+                    <button id="mobile-menu-button" class="ml-4 md:hidden">
+                        <i class="fas fa-bars text-gray-700"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- Mobile menu, hidden by default -->
+            <div id="mobile-menu" class="md:hidden hidden pt-4 pb-2">
+                <a href="#about" class="block py-2 text-gray-700 hover:text-blue-600">About</a>
+                <a href="#services" class="block py-2 text-gray-700 hover:text-blue-600">Services</a>
+                <a href="#pricing" class="block py-2 text-gray-700 hover:text-blue-600">Pricing</a>
+                <a href="#contact" class="block py-2 text-gray-700 hover:text-blue-600">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="bg-gradient-to-r from-blue-600 to-blue-500 text-white">
+        <div class="container mx-auto px-4 py-20">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">Harbor AI: Empowering Businesses with AI Workflows and Automation</h1>
+                    <p class="text-xl mb-8">Transform your operations and websites with cutting-edge AI solutions for workflows, automation, and development.</p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="#contact" class="bg-white text-blue-600 hover:bg-gray-100 py-3 px-8 rounded-md font-semibold text-center">Get a Free Consultation</a>
+                        <a href="#services" class="bg-transparent border-2 border-white hover:bg-white hover:text-blue-600 py-3 px-8 rounded-md font-semibold text-center transition-colors">Explore Services</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="/api/placeholder/600/400" alt="AI Workflow Automation" class="rounded-lg shadow-lg">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">About Harbor AI</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">We're a forward-thinking tech company dedicated to revolutionizing business operations through AI-driven solutions.</p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Our Mission</h3>
+                    <p class="text-gray-700 mb-6">Harbor AI is dedicated to empowering companies with innovative, efficient tools to enhance productivity and online presence. We believe in the transformative power of AI to solve complex business challenges and drive growth.</p>
+                    
+                    <h3 class="text-2xl font-bold mb-4">Our Values</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div class="p-4 border border-gray-200 rounded-lg">
+                            <div class="text-blue-600 text-xl mb-2"><i class="fas fa-lightbulb"></i></div>
+                            <h4 class="font-bold mb-2">Innovation</h4>
+                            <p class="text-gray-600">Constantly pushing boundaries with cutting-edge AI solutions</p>
+                        </div>
+                        <div class="p-4 border border-gray-200 rounded-lg">
+                            <div class="text-blue-600 text-xl mb-2"><i class="fas fa-tachometer-alt"></i></div>
+                            <h4 class="font-bold mb-2">Efficiency</h4>
+                            <p class="text-gray-600">Optimizing every process for maximum productivity</p>
+                        </div>
+                        <div class="p-4 border border-gray-200 rounded-lg">
+                            <div class="text-blue-600 text-xl mb-2"><i class="fas fa-shield-alt"></i></div>
+                            <h4 class="font-bold mb-2">Reliability</h4>
+                            <p class="text-gray-600">Building trust through consistent, dependable results</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2 md:pl-12">
+                    <img src="/api/placeholder/600/400" alt="About Harbor AI" class="rounded-lg shadow-lg">
+                    
+                    <div class="mt-8">
+                        <h3 class="text-2xl font-bold mb-4">Our Expert Team</h3>
+                        <p class="text-gray-700">Our team brings together diverse expertise in artificial intelligence, machine learning, software development, and business optimization. With decades of combined experience, we're uniquely positioned to transform your business operations.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">Our Services</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Discover how our AI solutions can transform your business operations</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Service Card 1 -->
+                <div class="card bg-white p-8">
+                    <div class="text-blue-600 text-4xl mb-4">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">AI Workflows</h3>
+                    <p class="text-gray-600 mb-4">Streamline operations with intelligent processes that learn and adapt to your business needs.</p>
+                    <p class="price-tag mb-6">From $899/month</p>
+                    <ul class="mb-6">
+                        <li class="mb-2"><i class="fas fa-check feature-check"></i> Custom workflow design</li>
+                        <li class="mb-2"><i class="fas fa-check feature-check"></i> Process optimization</li>
+                        <li class="mb-2"><i class="fas fa-check feature-check"></i> Integration with existing systems</li>
+                        <li class="mb-2"><i class="fas fa-check feature-check"></i> AI-powered decision making</li>
+                        <li class="mb-2"><i class="fas fa-check feature-check"></i> Real-time analytics</li>
+                    </ul>
+                    <a href="#contact" class="block text-center py-2 px-4 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors">Get Started</a>
+                </div>
+                
+                <!-- Service Card 2 -->
+                <div class="card bg-white p-8">
+                    <div class="text-blue-600 text-4xl mb-4">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Automation</h3>
+                    <p class="text-gray-600 mb-4">Boost efficiency with automated systems that reduce manual tasks by up to 40%.</p>
+                    <p class="price-tag mb-6">From $749/month</p>
+                    <ul class="mb-6">
+                        <li class="mb-2"><i class="fas fa-check feature-check"></i> Task automation</li>
+                        <li class="mb-2"><i class="fas fa-check feature-check"></i> 24/7 operation capability</li>
+                        <li class="mb-2"><i class="fas fa-check feature-check"></i> Error reduction systems</li>
+                        <li class="mb-2"><i class="fas fa-check feature-check"></i> Workflow optimization</li>
+                        <li class="mb-2"><i class="fas fa-check feature-check"></i> Performance monitoring</li>
+                    </ul>
+                    <a href="#contact" class="block text-center py-2 px-4 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors">Get Started</a>
+                </div>
+                
+                <!-- Service Card 3 -->
+                <div class="card bg-white p-8">
+                    <div class="text-blue-600 text-4xl mb-4">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Website Development</h3>
+                    <p class="text-gray-600 mb-4">Build and optimize high-performing websites with AI-enhanced features.</p>
+                    <p class="price-tag mb-6">From $1,299/month</p>
+                    <ul class="mb-6">
+                        <li class="mb-2"><i class="fas fa-check feature-check"></i> Custom website design</li>
+                        <li class="mb-2"><i class="fas fa-check feature-check"></i> SEO optimization</li>
+                        <li class="mb-2"><i class="fas fa-check feature-check"></i> Conversion rate optimization</li>
+                        <li class="mb-2"><i class="fas fa-check feature-check"></i> Mobile responsiveness</li>
+                        <li class="mb-2"><i class="fas fa-check feature-check"></i> Performance tuning</li>
+                    </ul>
+                    <a href="#contact" class="block text-center py-2 px-4 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors">Get Started</a>
+                </div>
+            </div>
+            
+            <div class="mt-16">
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold mb-6">How Our Services Work</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-2xl mx-auto mb-4">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <h4 class="font-bold mb-2">Consultation</h4>
+                            <p class="text-gray-600">We begin with understanding your unique business needs</p>
+                        </div>
+                        
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-2xl mx-auto mb-4">
+                                <i class="fas fa-sitemap"></i>
+                            </div>
+                            <h4 class="font-bold mb-2">Strategy</h4>
+                            <p class="text-gray-600">Our team develops a customized implementation plan</p>
+                        </div>
+                        
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-2xl mx-auto mb-4">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <h4 class="font-bold mb-2">Implementation</h4>
+                            <p class="text-gray-600">We build and deploy your AI solution with minimal disruption</p>
+                        </div>
+                        
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-2xl mx-auto mb-4">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h4 class="font-bold mb-2">Optimization</h4>
+                            <p class="text-gray-600">Continuous improvement based on performance metrics</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">Pricing Plans</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Flexible solutions tailored to your business requirements</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Pricing Card 1: Basic -->
+                <div class="price-card bg-white p-8 flex flex-col">
+                    <div class="mb-8">
+                        <h3 class="text-2xl font-bold mb-2">Starter</h3>
+                        <p class="text-gray-600 mb-4">Perfect for small businesses just beginning with AI</p>
+                        <div class="flex items-end">
+                            <span class="text-4xl font-bold">$749</span>
+                            <span class="text-gray-600 ml-2">/month</span>
+                        </div>
+                    </div>
+                    
+                    <ul class="mb-8 flex-grow">
+                        <li class="mb-3 flex items-start">
+                            <i class="fas fa-check feature-check mt-1"></i>
+                            <span>Basic automation for up to 3 processes</span>
+                        </li>
+                        <li class="mb-3 flex items-start">
+                            <i class="fas fa-check feature-check mt-1"></i>
+                            <span>Standard workflow templates</span>
+                        </li>
+                        <li class="mb-3 flex items-start">
+                            <i class="fas fa-check feature-check mt-1"></i>
+                            <span>Basic website optimization</span>
+                        </li>
+                        <li class="mb-3 flex items-start">
+                            <i class="fas fa-check feature-check mt-1"></i>
+                            <span>Email support</span>
+                        </li>
+                        <li class="mb-3 flex items-start">
+                            <i class="fas fa-check feature-check mt-1"></i>
+                            <span>Monthly performance reports</span>
+                        </li>
+                    </ul>
+                    
+                    <a href="#contact" class="block text-center py-3 px-6 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors">Get Started</a>
+                </div>
+                
+                <!-- Pricing Card 2: Pro (Featured) -->
+                <div class="price-card featured bg-white p-8 flex flex-col relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-blue-600 text-white py-1 px-4 transform rotate-45 translate-x-4 -translate-y-2">
+                        Popular
+                    </div>
+                    
+                    <div class="mb-8">
+                        <h3 class="text-2xl font-bold mb-2">Professional</h3>
+                        <p class="text-gray-600 mb-4">Comprehensive solution for growing businesses</p>
+                        <div class="flex items-end">
+                            <span class="text-4xl font-bold">$1,499</span>
+                            <span class="text-gray-600 ml-2">/month</span>
+                        </div>
+                    </div>
+                    
+                    <ul class="mb-8 flex-grow">
+                        <li class="mb-3 flex items-start">
+                            <i class="fas fa-check feature-check mt-1"></i>
+                            <span>Advanced automation for up to 10 processes</span>
+                        </li>
+                        <li class="mb-3 flex items-start">
+                            <i class="fas fa-check feature-check mt-1"></i>
+                            <span>Custom AI workflow design</span>
+                        </li>
+                        <li class="mb-3 flex items-start">
+                            <i class="fas fa-check feature-check mt-1"></i>
+                            <span>Full website development & optimization</span>
+                        </li>
+                        <li class="mb-3 flex items-start">
+                            <i class="fas fa-check feature-check mt-1"></i>
+                            <span>Priority support with 12-hour response</span>
+                        </li>
+                        <li class="mb-3 flex items-start">
+                            <i class="fas fa-check feature-check mt-1"></i>
+                            <span>Weekly performance reports</span>
+                        </li>
+                        <li class="mb-3 flex items-start">
+                            <i class="fas fa-check feature-check mt-1"></i>
+                            <span>Dedicated account manager</span>
+                        </li>
+                    </ul>
+                    
+                    <a href="#contact" class="block text-center py-3 px-6 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors">Get Started</a>
+                </div>
+                
+                <!-- Pricing Card 3: Enterprise -->
+                <div class="price-card bg-white p-8 flex flex-col">
+                    <div class="mb-8">
+                        <h3 class="text-2xl font-bold mb-2">Enterprise</h3>
+                        <p class="text-gray-600 mb-4">Tailored solutions for large organizations</p>
+                        <div class="flex items-end">
+                            <span class="text-4xl font-bold">$2,999</span>
+                            <span class="text-gray-600 ml-2">/month</span>
+                        </div>
+                    </div>
+                    
+                    <ul class="mb-8 flex-grow">
+                        <li class="mb-3 flex items-start">
+                            <i class="fas fa-check feature-check mt-1"></i>
+                            <span>Unlimited process automation</span>
+                        </li>
+                        <li class="mb-3 flex items-start">
+                            <i class="fas fa-check feature-check mt-1"></i>
+                            <span>Advanced AI workflow with ML capabilities</span>
+                        </li>
+                        <li class="mb-3 flex items-start">
+                            <i class="fas fa-check feature-check mt-1"></i>
+                            <span>Enterprise-grade website development</span>
+                        </li>
+                        <li class="mb-3 flex items-start">
+                            <i class="fas fa-check feature-check mt-1"></i>
+                            <span>24/7 premium support</span>
+                        </li>
+                        <li class="mb-3 flex items-start">
+                            <i class="fas fa-check feature-check mt-1"></i>
+                            <span>Real-time performance dashboard</span>
+                        </li>
+                        <li class="mb-3 flex items-start">
+                            <i class="fas fa-check feature-check mt-1"></i>
+                            <span>Custom integration with existing systems</span>
+                        </li>
+                        <li class="mb-3 flex items-start">
+                            <i class="fas fa-check feature-check mt-1"></i>
+                            <span>Quarterly strategy consultations</span>
+                        </li>
+                    </ul>
+                    
+                    <a href="#contact" class="block text-center py-3 px-6 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors">Get Started</a>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <p class="text-gray-600 mb-4">Need a custom solution? We offer flexible plans tailored to your specific requirements.</p>
+                <a href="#contact" class="inline-block btn-primary">Contact Us for Custom Pricing</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h2 class="text-3xl font-bold mb-6">How Harbor AI Benefits Your Business</h2>
+                    
+                    <div class="mb-6">
+                        <h3 class="text-xl font-semibold mb-2">Save 15+ Hours Per Week</h3>
+                        <p class="text-gray-600">Our AI workflows automatically handle repetitive tasks, freeing your team to focus on strategic initiatives.</p>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <h3 class="text-xl font-semibold mb-2">Improve Efficiency by 30%</h3>
+                        <p class="text-gray-600">Clients experience an average 30% improvement in operational efficiency after implementing our automation solutions.</p>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <h3 class="text-xl font-semibold mb-2">Boost Website Performance</h3>
+                        <p class="text-gray-600">Our AI-enhanced websites load 40% faster and convert 25% more visitors into customers.</p>
+                    </div>
+                    
+                    <a href="#contact" class="btn-primary inline-block">Schedule a Demo</a>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="/api/placeholder/600/400" alt="Business Benefits" class="rounded-lg shadow-lg">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Trusted by Innovative Companies</h2>
+                <p class="text-xl text-gray-600">See what our clients have to say about Harbor AI</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="card bg-white p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-6">"Harbor AI transformed our operations with their automation solutions. We've reduced processing time by 45% and significantly improved accuracy."</p>
+                    <div class="flex items-center">
+                        <img src="/api/placeholder/50/50" alt="Client" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <p class="font-bold">Sarah Johnson</p>
+                            <p class="text-gray-600 text-sm">CTO, TechInnovate</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="card bg-white p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-6">"The AI workflow solutions from Harbor AI have saved our team over 20 hours per week. The ROI was evident within the first month."</p>
+                    <div class="flex items-center">
+                        <img src="/api/placeholder/50/50" alt="Client" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <p class="font-bold">Michael Chen</p>
+                            <p class="text-gray-600 text-sm">Operations Director, GrowthStack</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="card bg-white p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-6">"Our website performance has improved dramatically since working with Harbor AI
+
+<!-- Add this before the closing body tag -->
+<script src="js/main.js"></script>
+</body>
+</html>
