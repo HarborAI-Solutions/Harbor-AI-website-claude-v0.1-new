@@ -13,20 +13,15 @@ jobs:
           fetch-depth: 0
 
       - name: Setup SSH
-        uses: MrSquaare/ssh-setup-action@v1
+        uses: webfactory/ssh-agent@v0.7.0
         with:
-          host: server345.web-hosting.com
-          private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-          # Disable strict host key checking
-          ssh-config: |
-            StrictHostKeyChecking=no
-            UserKnownHostsFile=/dev/null
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       
       - name: Deploy to Namecheap
         env:
           SSH_PORT: 21098
         run: |
-          # Disable host key checking for this session
+          # Disable host key checking
           mkdir -p ~/.ssh
           echo "Host *" >> ~/.ssh/config
           echo "  StrictHostKeyChecking no" >> ~/.ssh/config
