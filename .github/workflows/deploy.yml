@@ -10,31 +10,17 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Setup SSH
+      - name: Debug SSH Connection
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-        run: |
-          mkdir -p ~/.ssh
-          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -p 21098 server345.web-hosting.com >> ~/.ssh/known_hosts
-
-      - name: Deploy to Namecheap
-        env:
           SSH_HOST: server345.web-hosting.com
           SSH_USER: harbteat
           SSH_PORT: 21098
-          DEPLOY_PATH: /home/harbteat/public_html/
         run: |
-          # Copy .cpanel.yml to deployment directory
-          cp .cpanel.yml .cpanel.yml.bak
-
-          # Sync files to remote server
-          rsync -avz -e "ssh -p $SSH_PORT" \
-            --delete \
-            --exclude '.git' \
-            --exclude '.github' \
-            . $SSH_USER@$SSH_HOST:$DEPLOY_PATH
-
-          # Restore .cpanel.yml if needed
-          ssh -p $SSH_PORT $SSH_USER@$SSH_HOST "cp $DEPLOY_PATH/.cpanel.yml.bak $DEPLOY_PATH/.cpanel.yml"
+          # Prepare SSH
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          
+          # Verbose SSH test
+          ssh -vv -p $SSH_PORT $SSH_USER@$SSH_HOST exit
