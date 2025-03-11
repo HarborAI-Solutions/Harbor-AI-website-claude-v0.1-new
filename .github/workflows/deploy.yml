@@ -9,27 +9,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
 
       - name: Setup SSH
         uses: webfactory/ssh-agent@v0.7.0
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-      
+
       - name: Deploy to Namecheap
         env:
           SSH_HOST: server345.web-hosting.com
           SSH_USER: harbteat
           SSH_PORT: 21098
-          REMOTE_REPO: /home/harbteat/repositories/Harbor-AI-website-claude-v0.1-new
-          DEPLOY_PATH: /home/harbteat/public_html/
+          REMOTE_DIR: /home/harbteat/public_html/
         run: |
-          # Add remote repository
-          git remote add namecheap "ssh://$SSH_USER@$SSH_HOST:$SSH_PORT$REMOTE_REPO"
-          
-          # Push to remote repository
-          git push namecheap main
-          
-          # Copy files to public_html using SSH
-          ssh -p $SSH_PORT $SSH_USER@$SSH_HOST "cp -R $REMOTE_REPO/* $DEPLOY_PATH"
+          # Sync files to remote server
+          rsync -avz -e "ssh -p $SSH_PORT" \
+            --delete \
+            --exclude '.git' \
+            --exclude '.github' \
+            . $SSH_USER@$SSH_HOST:$REMOTE_DIR
