@@ -8,6 +8,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
+    <link href="css/cityscape.css" rel="stylesheet">
     <link href="css/robot-avatar.css" rel="stylesheet">
     <style>
         :root {
@@ -99,6 +100,10 @@
                     </div>
                 </div>
                 <div class="flex items-center">
+                    <a href="tel:1-347-210-6441" class="hidden md:flex items-center mr-6 text-gray-700 hover:text-blue-600">
+                        <i class="fas fa-phone-alt mr-2"></i>
+                        <span>1-347-210-6441</span>
+                    </a>
                     <a href="#contact" class="btn-primary">Get a Free Consultation</a>
                     <button id="mobile-menu-button" class="ml-4 md:hidden">
                         <i class="fas fa-bars text-gray-700"></i>
@@ -111,32 +116,57 @@
                 <a href="#services" class="block py-2 text-gray-700 hover:text-blue-600">Services</a>
                 <a href="#pricing" class="block py-2 text-gray-700 hover:text-blue-600">Pricing</a>
                 <a href="#contact" class="block py-2 text-gray-700 hover:text-blue-600">Contact</a>
+                <a href="tel:1-347-210-6441" class="block py-2 text-gray-700 hover:text-blue-600">
+                    <i class="fas fa-phone-alt mr-2"></i>
+                    1-347-210-6441
+                </a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="bg-gradient-to-r from-blue-600 to-blue-500 text-white">
-        <div class="container mx-auto px-4 py-20">
-            <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 mb-10 md:mb-0">
-                    <h1 class="text-4xl md:text-5xl font-bold mb-4">Harbor AI: Empowering Businesses with AI Workflows and Automation</h1>
-                    <p class="text-xl mb-8">Transform your operations and websites with cutting-edge AI solutions for workflows, automation, and development.</p>
-                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                        <a href="#contact" class="bg-white text-blue-600 hover:bg-gray-100 py-3 px-8 rounded-md font-semibold text-center">Get a Free Consultation</a>
-                        <a href="#services" class="bg-transparent border-2 border-white hover:bg-white hover:text-blue-600 py-3 px-8 rounded-md font-semibold text-center transition-colors">Explore Services</a>
-                    </div>
-                </div>
-                <div class="md:w-1/2">
-                    <img src="/api/placeholder/600/400" alt="AI Workflow Automation" class="rounded-lg shadow-lg">
-                </div>
+    <!-- Hero Section with Cybernetic Cityscape -->
+    <section id="home" class="cityscape-header">
+        <div class="cityscape-background"></div>
+        <div class="cityscape-overlay"></div>
+        <div class="flying-elements">
+            <div class="flying-element"></div>
+            <div class="flying-element"></div>
+            <div class="flying-element"></div>
+            <div class="flying-element"></div>
+            <div class="flying-element"></div>
+            <div class="flying-element"></div>
+            <div class="flying-element"></div>
+            <div class="flying-element"></div>
+            <div class="flying-element"></div>
+            <div class="flying-element"></div>
+        </div>
+        <div class="particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+        <div class="header-content">
+            <h1 class="header-title">Harbor AI: The Future of Business Automation</h1>
+            <p class="header-subtitle">Transform your operations with cutting-edge AI solutions for workflows, automation, and development</p>
+            <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mt-8">
+                <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white py-3 px-8 rounded-md font-semibold text-center transition-colors">Get Started</a>
+                <a href="#services" class="bg-transparent border-2 border-white hover:bg-white hover:text-blue-600 text-white py-3 px-8 rounded-md font-semibold text-center transition-colors">Explore Services</a>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-16 bg-white">
-        <div class="container mx-auto px-4">
+    <section id="about" class="py-8 bg-white">
+        <div class="container mx-auto px-4 pt-8">
             <div class="text-center mb-12">
                 <h2 class="text-3xl font-bold mb-4">About Harbor AI</h2>
                 <p class="text-xl text-gray-600 max-w-3xl mx-auto">We're a forward-thinking tech company dedicated to revolutionizing business operations through AI-driven solutions.</p>
@@ -179,8 +209,8 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-16 bg-gray-50">
-        <div class="container mx-auto px-4">
+    <section id="services" class="py-8 bg-gray-50">
+        <div class="container mx-auto px-4 pt-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-bold mb-4">Our Services</h2>
                 <p class="text-xl text-gray-600 max-w-2xl mx-auto">Discover how our AI solutions can transform your business operations</p>
@@ -285,8 +315,8 @@
     </section>
 
     <!-- Pricing Section -->
-    <section id="pricing" class="py-16 bg-white">
-        <div class="container mx-auto px-4">
+    <section id="pricing" class="py-8 bg-white">
+        <div class="container mx-auto px-4 pt-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-bold mb-4">Pricing Plans</h2>
                 <p class="text-xl text-gray-600 max-w-2xl mx-auto">Flexible solutions tailored to your business requirements</p>
@@ -429,8 +459,8 @@
     </section>
 
     <!-- Benefits Section -->
-    <section class="py-16 bg-gray-50">
-        <div class="container mx-auto px-4">
+    <section class="py-12 bg-gray-50">
+        <div class="container mx-auto px-4 pt-12">
             <div class="flex flex-col md:flex-row items-center">
                 <div class="md:w-1/2 mb-10 md:mb-0">
                     <h2 class="text-3xl font-bold mb-6">How Harbor AI Benefits Your Business</h2>
@@ -460,17 +490,17 @@
     </section>
 
     <!-- Testimonials Section -->
-    <section class="py-16 bg-white">
+    <section class="py-8 bg-white">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
+            <div class="text-center mb-8">
                 <h2 class="text-3xl font-bold mb-4">Trusted by Innovative Companies</h2>
                 <p class="text-xl text-gray-600">See what our clients have to say about Harbor AI</p>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <!-- Testimonial 1 -->
-                <div class="card bg-white p-6">
-                    <div class="flex items-center mb-4">
+                <div class="bg-white p-6 shadow-sm rounded-lg border border-gray-100">
+                    <div class="flex items-center mb-3">
                         <div class="text-yellow-400">
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
@@ -479,19 +509,19 @@
                             <i class="fas fa-star"></i>
                         </div>
                     </div>
-                    <p class="text-gray-700 mb-6">"Harbor AI transformed our operations with their automation solutions. We've reduced processing time by 45% and significantly improved accuracy."</p>
+                    <p class="text-gray-700 text-sm mb-4">"Harbor AI transformed our operations with their automation solutions. We've reduced processing time by 45% and significantly improved accuracy."</p>
                     <div class="flex items-center">
-                        <img src="/api/placeholder/50/50" alt="Client" class="w-12 h-12 rounded-full mr-4">
+                        <img src="/api/placeholder/40/40" alt="Client" class="w-10 h-10 rounded-full mr-3">
                         <div>
-                            <p class="font-bold">Sarah Johnson</p>
-                            <p class="text-gray-600 text-sm">CTO, TechInnovate</p>
+                            <p class="font-bold text-sm">Sarah Johnson</p>
+                            <p class="text-gray-600 text-xs">CTO, TechInnovate</p>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Testimonial 2 -->
-                <div class="card bg-white p-6">
-                    <div class="flex items-center mb-4">
+                <div class="bg-white p-6 shadow-sm rounded-lg border border-gray-100">
+                    <div class="flex items-center mb-3">
                         <div class="text-yellow-400">
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
@@ -500,19 +530,19 @@
                             <i class="fas fa-star"></i>
                         </div>
                     </div>
-                    <p class="text-gray-700 mb-6">"The AI workflow solutions from Harbor AI have saved our team over 20 hours per week. The ROI was evident within the first month."</p>
+                    <p class="text-gray-700 text-sm mb-4">"The AI workflow solutions from Harbor AI have saved our team over 20 hours per week. The ROI was evident within the first month."</p>
                     <div class="flex items-center">
-                        <img src="/api/placeholder/50/50" alt="Client" class="w-12 h-12 rounded-full mr-4">
+                        <img src="/api/placeholder/40/40" alt="Client" class="w-10 h-10 rounded-full mr-3">
                         <div>
-                            <p class="font-bold">Michael Chen</p>
-                            <p class="text-gray-600 text-sm">Operations Director, GrowthStack</p>
+                            <p class="font-bold text-sm">Michael Chen</p>
+                            <p class="text-gray-600 text-xs">Operations Director, GrowthStack</p>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Testimonial 3 -->
-                <div class="card bg-white p-6">
-                    <div class="flex items-center mb-4">
+                <div class="bg-white p-6 shadow-sm rounded-lg border border-gray-100">
+                    <div class="flex items-center mb-3">
                         <div class="text-yellow-400">
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
@@ -521,10 +551,59 @@
                             <i class="fas fa-star-half-alt"></i>
                         </div>
                     </div>
-                    <p class="text-gray-700 mb-6">"Our website performance has improved dramatically since working with Harbor AI
+                    <p class="text-gray-700 text-sm mb-4">"Our website performance has improved dramatically since working with Harbor AI. Their team's expertise and dedication to results is outstanding."</p>
+                    <div class="flex items-center">
+                        <img src="/api/placeholder/40/40" alt="Client" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <p class="font-bold text-sm">Emily Rodriguez</p>
+                            <p class="text-gray-600 text-xs">Marketing Manager, GrowthTech</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- Add this before the closing body tag -->
-<script src="js/main.js"></script>
-<script src="js/robot-avatar.js"></script>
+    <!-- Contact Section -->
+    <section id="contact" class="py-12 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold mb-4">Get in Touch</h2>
+                <p class="text-xl text-gray-600">Ready to transform your business? Let's talk about your needs.</p>
+            </div>
+            
+            <div class="max-w-2xl mx-auto">
+                <form id="contact-form" class="bg-white p-8 rounded-lg shadow-md">
+                    <div class="mb-6">
+                        <label for="name" class="block text-gray-700 font-semibold mb-2">Name</label>
+                        <input type="text" id="name" name="name" required class="contact-input" placeholder="Your name">
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label for="email" class="block text-gray-700 font-semibold mb-2">Email</label>
+                        <input type="email" id="email" name="email" required class="contact-input" placeholder="your@email.com">
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label for="company" class="block text-gray-700 font-semibold mb-2">Company</label>
+                        <input type="text" id="company" name="company" class="contact-input" placeholder="Your company name">
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label for="message" class="block text-gray-700 font-semibold mb-2">Message</label>
+                        <textarea id="message" name="message" required class="contact-input h-32" placeholder="Tell us about your project or requirements"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-blue-600 text-white py-3 px-6 rounded-md hover:bg-blue-700 transition-colors">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add this before the closing body tag -->
+    <script src="js/main.js"></script>
+    <script src="js/robot-avatar.js"></script>
 </body>
 </html>
