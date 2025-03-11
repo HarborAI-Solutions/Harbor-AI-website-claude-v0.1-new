@@ -1,6 +1,6 @@
-// Robot Avatar that follows cursor
+// Robot Frog Avatar
 document.addEventListener('DOMContentLoaded', function() {
-    // Create robot avatar element
+    // Create robot frog avatar element
     const robot = document.createElement('div');
     robot.id = 'robot-avatar';
     robot.innerHTML = `
@@ -9,38 +9,25 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="robot-eye left"></div>
                 <div class="robot-eye right"></div>
             </div>
-            <div class="robot-antenna"></div>
+            <div class="robot-mouth"></div>
+            <div class="robot-detail detail-1"></div>
+            <div class="robot-detail detail-2"></div>
         </div>
         <div class="robot-body">
-            <div class="robot-arms">
-                <div class="robot-arm left"></div>
-                <div class="robot-arm right"></div>
-            </div>
+            <div class="robot-detail detail-1"></div>
+            <div class="robot-detail detail-2"></div>
         </div>
     `;
     document.body.appendChild(robot);
 
-    // Set initial position (off-screen)
-    let robotX = -100;
-    let robotY = -100;
+    // Eye movement parameters
+    const maxEyeMove = 3; // Maximum pixels the eyes can move
+    let lastMouseX = 0;
+    let lastMouseY = 0;
     
-    // Target position (where the robot should move to)
-    let targetX = -100;
-    let targetY = -100;
-    
-    // Speed of the robot (lower = slower)
-    const speed = 0.1;
-    
-    // Offset from cursor
-    const offsetX = 30;
-    const offsetY = 30;
-    
-    // Update target position on mouse move
+    // Update eye position on mouse move
     document.addEventListener('mousemove', function(e) {
-        targetX = e.clientX + offsetX;
-        targetY = e.clientY + offsetY;
-        
-        // Make robot eyes look at cursor
+        // Get robot's position
         const robotRect = robot.getBoundingClientRect();
         const robotCenterX = robotRect.left + robotRect.width / 2;
         const robotCenterY = robotRect.top + robotRect.height / 2;
@@ -48,45 +35,39 @@ document.addEventListener('DOMContentLoaded', function() {
         // Calculate angle between robot and cursor
         const angle = Math.atan2(e.clientY - robotCenterY, e.clientX - robotCenterX);
         
-        // Move robot eyes based on cursor position
-        const eyes = robot.querySelectorAll('.robot-eye');
+        // Calculate eye movement with limited range
+        const eyeX = Math.cos(angle) * maxEyeMove;
+        const eyeY = Math.sin(angle) * maxEyeMove;
+        
+        // Apply smooth eye movement
+        const eyes = robot.querySelectorAll('.robot-eye::after');
         eyes.forEach(eye => {
-            const eyeX = Math.cos(angle) * 2;
-            const eyeY = Math.sin(angle) * 2;
-            eye.style.transform = `translate(${eyeX}px, ${eyeY}px)`;
+            eye.style.transform = `translate(calc(-50% + ${eyeX}px), calc(-50% + ${eyeY}px))`;
         });
+
+        // Store mouse position for smooth movement
+        lastMouseX = e.clientX;
+        lastMouseY = e.clientY;
     });
-    
-    // Animation loop for smooth following
-    function animateRobot() {
-        // Calculate distance to target
-        const dx = targetX - robotX;
-        const dy = targetY - robotY;
+
+    // Occasional random head turns
+    function randomHeadTurn() {
+        const head = robot.querySelector('.robot-head');
+        const randomDelay = Math.random() * 5000 + 3000; // Random delay between 3-8 seconds
         
-        // Move robot towards target with easing
-        robotX += dx * speed;
-        robotY += dy * speed;
-        
-        // Apply position
-        robot.style.left = `${robotX}px`;
-        robot.style.top = `${robotY}px`;
-        
-        // Continue animation
-        requestAnimationFrame(animateRobot);
+        setTimeout(() => {
+            // Add class to trigger turn animation
+            head.style.transform = `rotate(${Math.random() < 0.5 ? '-' : ''}${Math.random() * 10 + 5}deg)`;
+            
+            // Reset head position after turn
+            setTimeout(() => {
+                head.style.transform = 'rotate(0deg)';
+                // Schedule next turn
+                randomHeadTurn();
+            }, 500);
+        }, randomDelay);
     }
-    
-    // Start animation
-    animateRobot();
-    
-    // Hide robot when cursor leaves the window
-    document.addEventListener('mouseout', function(e) {
-        if (e.relatedTarget === null) {
-            robot.style.opacity = '0';
-        }
-    });
-    
-    // Show robot when cursor enters the window
-    document.addEventListener('mouseover', function() {
-        robot.style.opacity = '1';
-    });
+
+    // Start random head turns
+    randomHeadTurn();
 }); 

@@ -1,142 +1,135 @@
-/* Robot Avatar Styles */
+/* Robot Frog Avatar Styles */
 #robot-avatar {
     position: fixed;
-    width: 60px;
-    height: 80px;
+    width: 120px;
+    height: 100px;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
     z-index: 9999;
-    pointer-events: none; /* Allow clicking through the robot */
-    transition: opacity 0.3s ease;
-    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+    pointer-events: none;
+    transition: transform 0.5s ease;
 }
 
-/* Robot Head */
+/* Robot Frog Head */
 .robot-head {
-    width: 50px;
-    height: 40px;
-    background-color: #0066c0;
-    border-radius: 10px;
+    width: 100px;
+    height: 80px;
+    background-color: #4CAF50; /* Frog green */
+    border-radius: 50px 50px 40px 40px;
     position: relative;
     margin: 0 auto;
+    border: 4px solid #388E3C;
+    overflow: hidden;
 }
 
-/* Robot Antenna */
-.robot-antenna {
-    position: absolute;
-    top: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 4px;
-    height: 15px;
-    background-color: #333;
-    border-radius: 2px;
-}
-
-.robot-antenna::after {
-    content: '';
-    position: absolute;
-    top: -5px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 8px;
-    height: 8px;
-    background-color: #ff3333;
-    border-radius: 50%;
-    animation: blink 2s infinite;
-}
-
-/* Robot Eyes */
+/* Robot Frog Eyes */
 .robot-eyes {
     display: flex;
     justify-content: space-around;
     padding-top: 15px;
+    position: relative;
 }
 
 .robot-eye {
-    width: 12px;
-    height: 12px;
+    width: 30px;
+    height: 30px;
     background-color: white;
     border-radius: 50%;
     position: relative;
+    border: 3px solid #388E3C;
+    overflow: hidden;
 }
 
 .robot-eye::after {
     content: '';
     position: absolute;
-    width: 6px;
-    height: 6px;
+    width: 15px;
+    height: 15px;
     background-color: #333;
     border-radius: 50%;
-    top: 3px;
-    left: 3px;
-    transition: transform 0.1s ease;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.2s ease;
 }
 
-/* Robot Body */
+/* Robot Frog Mouth */
+.robot-mouth {
+    width: 60px;
+    height: 20px;
+    background-color: #388E3C;
+    border-radius: 0 0 30px 30px;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Robot Frog Body */
 .robot-body {
-    width: 40px;
-    height: 30px;
-    background-color: #0099ff;
-    border-radius: 5px;
-    margin: 5px auto 0;
+    width: 80px;
+    height: 40px;
+    background-color: #4CAF50;
+    border-radius: 20px;
+    margin: -10px auto 0;
     position: relative;
+    border: 4px solid #388E3C;
 }
 
-/* Robot Arms */
-.robot-arms {
+/* Mechanical Details */
+.robot-detail {
     position: absolute;
-    width: 100%;
-    top: 5px;
+    background-color: #388E3C;
+    border-radius: 4px;
 }
 
-.robot-arm {
-    position: absolute;
+.detail-1 {
     width: 10px;
-    height: 25px;
-    background-color: #0066c0;
-    border-radius: 5px;
+    height: 4px;
+    top: 10px;
+    left: 10px;
 }
 
-.robot-arm.left {
-    left: -12px;
-    transform-origin: top right;
-    animation: waveLeft 3s infinite;
+.detail-2 {
+    width: 10px;
+    height: 4px;
+    top: 10px;
+    right: 10px;
 }
 
-.robot-arm.right {
-    right: -12px;
-    transform-origin: top left;
-    animation: waveRight 3s infinite;
-}
-
-/* Animations */
-@keyframes blink {
-    0%, 50%, 100% {
-        opacity: 1;
-    }
-    25%, 75% {
-        opacity: 0.5;
-    }
-}
-
-@keyframes waveLeft {
-    0%, 100% {
+/* Head Turn Animation */
+@keyframes turnHead {
+    0%, 90%, 100% {
         transform: rotate(0deg);
     }
-    50% {
-        transform: rotate(-15deg);
+    95% {
+        transform: rotate(10deg);
     }
 }
 
-@keyframes waveRight {
-    0%, 100% {
-        transform: rotate(0deg);
-    }
-    50% {
-        transform: rotate(15deg);
-    }
+.robot-head {
+    animation: turnHead 5s infinite;
+    transform-origin: center bottom;
 }
 
-/* Hover effect */
-#robot-avatar:hover .robot-antenna::after {
-    background-color: #00ff00;
+/* Metallic Shine */
+.robot-head::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 80px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transform: skewX(-45deg);
+    animation: shine 4s infinite;
+    left: -100%;
+}
+
+@keyframes shine {
+    0% {
+        left: -100%;
+    }
+    20%, 100% {
+        left: 200%;
+    }
 } 
