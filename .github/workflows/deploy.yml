@@ -2,7 +2,7 @@ name: Deploy to Namecheap
 
 on:
   push:
-    branches: [ main ]  # Adjust if your primary branch has a different name
+    branches: [ main ]
 
 jobs:
   deploy:
@@ -16,9 +16,9 @@ jobs:
         uses: shimataro/ssh-key-action@v2
         with:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          known_hosts: ${{ secrets.KNOWN_HOSTS }}
+          known_hosts: 'server345.web-hosting.com ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDBwg/mB4HD5pJ3cG9Z+mL8qnAYVbYT8o1eiA0JjkPROdXz+Cf5XxeZyvXRUvfTvCo6lS4sXQrYm0hXLy3mJK/hE9o0gMjZbcYeAC0XQC9q+Q4e5RFJqkH0UicVMUq5KLwRqm6K5cYw/A1LQK1XQ9FDOg6K9MUq5KLwRqm6K5cYwWWW45GK3KQwPF7dpYf+FXf+GGnHiHfSiCwPvJBlAYsw3Bw3T3kQhkA2C8JI5m/D7xyAJGfLGr9AHxYg34RJZ6PmL5QtQYPHcwGZSBubbCmQxWJm'
+          if_key_exists: replace
           
       - name: Deploy to Namecheap
         run: |
-          git remote add namecheap ssh://harbteat@server345.web-hosting.com:21098/home/harbteat/repositories/Harbor-AI-website-claude-v0.1-new
-          git push namecheap main
+          mkdir -p ~/.ssh
