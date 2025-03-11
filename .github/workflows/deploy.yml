@@ -17,11 +17,21 @@ jobs:
         with:
           host: server345.web-hosting.com
           private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          # Disable strict host key checking
+          ssh-config: |
+            StrictHostKeyChecking=no
+            UserKnownHostsFile=/dev/null
       
       - name: Deploy to Namecheap
         env:
           SSH_PORT: 21098
         run: |
+          # Disable host key checking for this session
+          mkdir -p ~/.ssh
+          echo "Host *" >> ~/.ssh/config
+          echo "  StrictHostKeyChecking no" >> ~/.ssh/config
+          echo "  UserKnownHostsFile /dev/null" >> ~/.ssh/config
+
           # Add remote repository
           git remote add namecheap "ssh://harbteat@server345.web-hosting.com:$SSH_PORT/home/harbteat/repositories/Harbor-AI-website-claude-v0.1-new"
           
